@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .dynamic-height {
+    height: calc(100vh - 7rem); /* Example calculation */
+  }
+  .fit-content {
+    object-fit: cover;
+  }
+}
