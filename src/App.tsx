@@ -1,15 +1,12 @@
+import React from "react"
+import HomePage from "./pages/HomePage"
 
-function App() {
-
-
+const App: React.FC = ()=>{
   return (
-    <>
-    
-      <h1>Code Cafe</h1>
-     
-      
-    </>
+    <div className="bg-[#130726]">
+      <HomePage/>
+    </div>
   )
 }
 
-export default App
+export default App;
