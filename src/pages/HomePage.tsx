@@ -8,6 +8,43 @@ const HomePage: React.FC = () => {
     <div>
       <Header />
       <HeroSection/>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
+      <div>Kunal</div>
     </div>
   );
 };
