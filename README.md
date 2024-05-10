@@ -1,4 +1,4 @@
-# [Company Name]
+# CodeCafe
 
 Welcome to **CodeCafe**'s repository! We are an IT company specializing in cutting-edge technology solutions for businesses and individuals. Our team of experts is dedicated to delivering innovative and reliable services that drive success and growth for our clients.
 
