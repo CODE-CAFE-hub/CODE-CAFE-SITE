@@ -7,7 +7,7 @@ const HomePage: React.FC = () => {
   return (
     <div>
       <Header />
-      <HeroSection/>
+      <HeroSection />
     </div>
   );
 };
