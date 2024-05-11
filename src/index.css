@@ -9,4 +9,7 @@
   .fit-content {
     object-fit: cover;
   }
+  .letter-space {
+    letter-spacing: 8px;
+  }
 }
