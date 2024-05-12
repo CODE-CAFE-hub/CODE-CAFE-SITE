@@ -14,8 +14,8 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <div className="h-28 w-full flex font-headingFont px-10 items-center justify-between gap-1 font-sm">
-      <div className="flex justify-center items-center gap-5">
+    <div className="md:h-28 w-full flex font-headingFont md:px-10 items-center justify-between gap-1 font-sm px-5 py-2 fixed top-0 z-50 bg-[#130726]">
+      <div className="flex justify-center items-center gap-2">
         <div
           tabIndex={0}
           role="button"
@@ -40,7 +40,7 @@ const Header: React.FC = () => {
           <Logo />
         </div>
       </div>
-      <div className="hidden  md:min-w-1/2 lg:min-w-1/2 rounded-full text-white md:block lg:block bg-[#301E53] px-10 py-4 shadow-black">
+      <div className="hidden  md:min-w-1/2 lg:min-w-1/2 rounded-full text-white md:block lg:block bg-[#301E53] px-10 py-4 sha">
         <ul className="flex gap-5  justify-center items-center ">
           {nav.map((item: any) => {
             return (

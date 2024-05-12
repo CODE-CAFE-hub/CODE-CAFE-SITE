@@ -1,12 +1,18 @@
-import React from "react"
-import HomePage from "./pages/HomePage"
+import React from "react";
+import HomePage from "./pages/HomePage";
+import { Cursor, Header} from "./components/components";
 
-const App: React.FC = ()=>{
+const App: React.FC = () => {
   return (
     <div className="bg-[#130726]">
-      <HomePage/>
+      <Cursor/>
+      <Header />
+      <main className="md:mt-16 mt-20">
+       <HomePage />
+    
+      </main>
     </div>
-  )
-}
+  );
+};
 
 export default App;
