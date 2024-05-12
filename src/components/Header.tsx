@@ -14,7 +14,7 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <div className="md:h-28 w-full flex font-headingFont md:px-10 items-center justify-between gap-1 font-sm px-5 py-2 fixed top-0 z-50 bg-[#130726]">
+    <div className="md:h-28 w-full flex font-headingFont md:px-14 items-center justify-between gap-1 font-sm px-5 py-2 fixed top-0 z-50 bg-[#130726]">
       <div className="flex justify-center items-center gap-2">
         <div
           tabIndex={0}
@@ -55,7 +55,7 @@ const Header: React.FC = () => {
         </ul>
       </div>
       <div className="login">
-        <button className=" py-1 bg-[#301E53] shadow-2xl  rounded-full px-5 text-gray-200  ">
+        <button className=" py-1 mr-8 bg-[#301E53] shadow-2xl  rounded-full px-5 text-gray-200  ">
           Sign In
         </button>
       </div>
