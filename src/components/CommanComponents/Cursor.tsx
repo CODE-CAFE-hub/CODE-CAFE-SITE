@@ -31,12 +31,12 @@ const  Cursor: React.FC = () =>  {
           left: position.x - 5.5, // Adjust the offset as needed
           width: '20px',
           height: '20px',
-          background: 'transprant', // You can customize the styling
+          background: '#fff', // You can customize the styling
           borderRadius: '50%',
           zIndex: 100,
           pointerEvents: 'none',
           mixBlendMode: 'difference',
-          // transition: 'transform 0.3s ease-out', // CSS transition for smooth scaling
+          transition: 'transform 0.3s ease-out', // CSS transition for smooth scaling
           // Scale the cursor on hover
         }}
       />
