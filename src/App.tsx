@@ -7,7 +7,7 @@ const App: React.FC = () => {
     <div className="bg-[#130726]">
       <Cursor/>
       <Header />
-      <main className="md:mt-16 mt-20">
+      <main className="md:mt-16 mt-20 mx-8">
        <HomePage />
     
       </main>

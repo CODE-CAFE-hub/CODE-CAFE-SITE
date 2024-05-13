@@ -21,7 +21,7 @@ const Services: React.FC<servicesProps> = ({titel,description,img}) => {
             scale: scleProgess,
             opacity: opacityProgess,
           }}
-          className=" border rounded-lg p-4 relative shadow-2xl bg-[#590BAA]  w-auto items-center justify-center flex md:mx-5"
+          className=" border rounded-lg p-4 relative shadow-2xl bg-[#590BAA]  w-auto items-center justify-center flex md:mx-5 "
         >
 
           <div className="bg-[#590BAA] border w-24 h-24 absolute -top-10 rounded-full flex items-center justify-center">
