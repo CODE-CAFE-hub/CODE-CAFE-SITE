@@ -15,10 +15,10 @@ const FeaturedProjectCard: React.FC<IFeatured> = ({
   role,
 }) => {
   return (
-    <div className="md:flex md:flex-row gap-5 flex-col w-full mt-14  justify-between  items-center">
+    <div className="md:flex md:flex-row gap-5 flex-col w-full mt-14  justify-between  items-center ">
       <div className="md:w-1/2">
         <img
-          className="rounded-xl md:w-[600px] md:h-[300px]"
+          className="rounded-xl md:w-[600px] md:h-[300px] "
           src={img}
           alt={title}
         />

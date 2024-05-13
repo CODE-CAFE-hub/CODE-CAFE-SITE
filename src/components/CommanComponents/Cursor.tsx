@@ -7,7 +7,7 @@ interface CursorPosition {
   
 const  Cursor: React.FC = () =>  {
     const [position, setPosition] = useState<CursorPosition>({ x: 0, y: 0 });
-    const [isHovered, setIsHovered] = useState(false);
+ 
     
     
     useEffect(() => {
@@ -25,20 +25,19 @@ const  Cursor: React.FC = () =>  {
   return (
     <>
       <div
-        className={`cursor ${isHovered ? 'hovered' : ''} hidden md:block`}
         style={{
           position: 'fixed',
           top: position.y - 5.5, // Adjust the offset as needed
           left: position.x - 5.5, // Adjust the offset as needed
-          width: '50px',
-          height: '50px',
+          width: '20px',
+          height: '20px',
           background: '#fff', // You can customize the styling
           borderRadius: '50%',
           zIndex: 100,
           pointerEvents: 'none',
           mixBlendMode: 'difference',
           transition: 'transform 0.3s ease-out', // CSS transition for smooth scaling
-          transform: isHovered ? 'scale(8)' : 'scale(1)', // Scale the cursor on hover
+          // Scale the cursor on hover
         }}
       />
     </>
