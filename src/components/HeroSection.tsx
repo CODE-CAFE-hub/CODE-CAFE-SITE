@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Button from "./CommanComponents/Button";
-import { Cursor } from "./components";
+
 
 const HeroSection: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);

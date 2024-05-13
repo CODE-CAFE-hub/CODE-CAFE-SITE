@@ -1,7 +1,9 @@
 import React from "react";
 import HeroSection from "../components/HeroSection";
 import Services from "../components/Serviecs";
-import { serviceHomeContant } from "../components/utils/serviceHomeContant";
+import { serviceHomeContant } from "../components/utils/HomeContant";
+import {FeaturedProjects} from "../components/components";
+
 
 // Define the functional component
 const HomePage: React.FC = () => {
@@ -12,7 +14,7 @@ const HomePage: React.FC = () => {
         <h1 className="text-center font-semibold text-4xl letter-space">
           SERVICES
         </h1>
-        <div className=" md:flex lg:flex flex-none justify-center items-center p-5">
+        <div className=" md:flex lg:flex flex-none justify-center  items-center p-5">
           {serviceHomeContant.map((item: any, index: number) => (
             <div key={index}>
               <Services
@@ -24,7 +26,11 @@ const HomePage: React.FC = () => {
           ))}
         </div>
       </div>
+      <div>
+       <FeaturedProjects/>
+      </div>
     </div>
+  
   );
 };
 
