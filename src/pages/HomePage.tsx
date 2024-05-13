@@ -4,6 +4,7 @@ import { serviceHomeContant } from "../components/utils/HomeContant";
 import {
   AboutSection,
   FeaturedProjects,
+  Interested,
   Services,
 } from "../components/components";
 
@@ -37,6 +38,10 @@ const HomePage: React.FC = () => {
         {/* AboutSecation */}
         <div className="AboutSecation">
           <AboutSection />
+        </div>
+         {/*Interested */}
+        <div className="Interested p-10">
+          <Interested/>
         </div>
       </div>
     </div>

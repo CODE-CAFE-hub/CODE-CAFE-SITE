@@ -6,4 +6,5 @@ import Cursor from "./CommanComponents/Cursor"
 import FeaturedProjects from "./Home/FeaturedProjects";
 import Services from "./Home/Serviecs"
 import AboutSection from "./Home/AboutSection"
-export {Header,HeroSection,Logo,Button,Cursor,FeaturedProjects,Services , AboutSection}
+import Interested from "./Home/Interested"
+export {Header,HeroSection,Logo,Button,Cursor,FeaturedProjects,Services , AboutSection,Interested}

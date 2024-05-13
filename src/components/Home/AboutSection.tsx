@@ -1,6 +1,6 @@
 import { Button } from "../components";
 
-function AboutSection() {
+const AboutSection:React.FC =  () => {
   return (
     <div className="md:flex md:flex-row gap-5 flex-col w-full p-5  justify-between  items-center">
       <div className="md:w-1/2 flex flex-col gap-5 mt-5 p-5">
