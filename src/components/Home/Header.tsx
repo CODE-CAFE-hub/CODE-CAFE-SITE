@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import Logo from "../Logo";
 
 const Header: React.FC = () => {
@@ -8,9 +9,9 @@ const Header: React.FC = () => {
 
   const nav: NavItem[] = [
     { name: "Home", link: "/" },
-    { name: "About", link: "/" },
-    { name: "Servics", link: "/" },
-    { name: "Contact", link: "/" },
+    { name: "About", link: "/about" },
+    { name: "Servics", link: "/services" },
+    { name: "Contact", link: "/contactus" },
   ];
 
   return (
@@ -54,12 +55,13 @@ const Header: React.FC = () => {
             {/* Sidebar content here */}
             {nav.map((item: any) => {
             return (
-              <li
+              <NavLink
+                to={item.link}
                 key={item.name}
-                className="py-2 my-5 rounded-lg px-5 text-center text-xl bg-[#0a0612] "
+                className={({ isActive }) => ` ${isActive ? "bg-[#0a0612] focus:border-b-2" : ""} py-2 my-5 rounded-lg px-5 text-center text-xl hover:bg-[#0a0612] border-b-2`}
               >
                 {item.name}
-              </li>
+              </NavLink>
             );
           })}
           </ul>
@@ -74,12 +76,14 @@ const Header: React.FC = () => {
         <ul className="flex gap-5  justify-center items-center ">
           {nav.map((item: any) => {
             return (
-              <li
+              <NavLink
+                to={item.link}
                 key={item.name}
-                className="bg-[#130726] py-1 rounded-full px-5  "
+                className={({ isActive }) => ` ${isActive ? "bg-[#130726] border-b-2" : ""} py-1 rounded-full px-5 hover:bg-[#0a0612] `}
               >
                 {item.name}
-              </li>
+              </NavLink>
+              
             );
           })}
         </ul>

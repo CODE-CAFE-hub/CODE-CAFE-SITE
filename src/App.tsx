@@ -1,6 +1,6 @@
 import React from "react";
-import HomePage from "./pages/HomePage";
 import { Cursor, Footer, Header} from "./components/components";
+import { Outlet } from "react-router-dom";
 
 const App: React.FC = () => {
   return (
@@ -8,9 +8,9 @@ const App: React.FC = () => {
       <Cursor/>
       <Header />
       <main className="md:mt-16 mt-20">
-       <HomePage />
-    <Footer/>
+       <Outlet/>
       </main>
+    <Footer/>
     </div>
   );
 };
