@@ -2,13 +2,27 @@ import { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
-
-const HomePage = lazy(() => import("./pages/HomePage"));
-const About = lazy(() => import("./pages/About"));
-const Contact = lazy(() => import("./pages/Contact"));
-const Services = lazy(() => import("./pages/Services.tsx"));
-
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Loader } from "./components/components.ts";
+
+
+const HomePage = lazy(() => delayForDemo(import("./pages/HomePage")));
+const About = lazy(() => delayForDemo(import("./pages/About")));
+const Contact = lazy(() => delayForDemo(import("./pages/Contact")));
+const Services = lazy(() => delayForDemo(import("./pages/Services.tsx")));
+
+interface PromiseFunction<T> {
+  (promise: Promise<T>): Promise<T>;
+}
+
+const delayForDemo: PromiseFunction<any> = (promise) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(promise);
+    }, 1000);
+  });
+};
+
 
 const router = createBrowserRouter([
   {
@@ -39,7 +53,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <Suspense
     fallback={
       <div>
-        <h1>Loading...</h1>
+        <h1><Loader/></h1>
       </div>
     }
   >

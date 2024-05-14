@@ -25,6 +25,7 @@ const  Cursor: React.FC = () =>  {
   return (
     <>
       <div
+      className='hidden md:block'
         style={{
           position: 'fixed',
           top: position.y - 5.5, // Adjust the offset as needed

@@ -8,4 +8,5 @@ import Services from "./Home/Serviecs"
 import AboutSection from "./Home/AboutSection"
 import Interested from "./Home/Interested"
 import Footer from "./Footer"
-export {Header,HeroSection,Logo,Button,Cursor,FeaturedProjects,Services , AboutSection,Interested,Footer}
+import Loader from "./Comman/Loader"
+export {Header,HeroSection,Logo,Button,Cursor,FeaturedProjects,Services , AboutSection,Interested,Footer ,Loader}
