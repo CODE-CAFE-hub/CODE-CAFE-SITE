@@ -1,5 +1,5 @@
 import React from "react";
-import FeaturedProjectCard from "../CommanComponents/FeaturedProjectCard";
+import FeaturedProjectCard from "../Comman/FeaturedProjectCard";
 import { FeaturedProjectContant } from "../utils/HomeContant";
 
 const FeaturedProjects: React.FC = () => {
