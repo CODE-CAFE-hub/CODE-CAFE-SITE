@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import Button from "../CommanComponents/Button";
+import Button from "../Comman/Button";
 
 
 const HeroSection: React.FC = () => {
