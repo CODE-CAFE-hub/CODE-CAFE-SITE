@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-
+import "../styles/global.css";
 interface LayoutProps {
   children: ReactNode;
 }
@@ -9,7 +9,7 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <>
       <html>
-        <body>{children}</body>
+        <body className="bg-teal-100">{children}</body>
       </html>
     </>
   );
