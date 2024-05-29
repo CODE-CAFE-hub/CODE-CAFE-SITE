@@ -1,28 +1,23 @@
-// pages/api/projects/index.ts
-import dbConnect from "@/lib/dbConnect";
-import type { NextApiRequest, NextApiResponse } from "next";
-import Project from "@/models/project";
+import { NextApiRequest, NextApiResponse } from "next";
+import dbConnect from "../../../lib/db";
+import Project from "../../../models/Project";
+import { log } from "console";
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   await dbConnect();
-
-  if (req.method === "POST") {
-    const { title, description, pictureUrls, tags } = req.body;
-
-    try {
-      const newProject = new Project({ title, description, pictureUrls, tags });
-      await newProject.save();
-      res.status(201).json(newProject);
-    } catch (error) {
-      if (error instanceof Error) {
-        res
-          .status(400)
-          .json({ message: "Error creating project", error: error.message });
-      } else {
-        res.status(400).json({ message: "Error creating project" });
-      }
-    }
+  if (req.method === "GET") {
+    const projects = await Project.find();
+    log("hello projects");
+    res.status(200).json(projects);
+  } else if (req.method === "POST") {
+    const project = new Project(req.body);
+    await project.save();
+    res.status(201).json(project);
   } else {
-    res.status(405).end(); // Method Not Allowed
+    res.setHeader("Allow", ["GET", "POST"]);
+    res.status(405).end(`Method ${req.method} Not Allowed`);
   }
-};
+}

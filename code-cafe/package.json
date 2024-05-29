@@ -6,30 +6,23 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "postbuild": "node ./scripts/add-urls-to-kinde.js"
+    "lint": "next lint"
   },
   "dependencies": {
-    "@kinde-oss/kinde-auth-nextjs": "^2.2.10",
-    "@types/bcrypt": "^5.0.2",
-    "@types/mongoose": "^5.11.97",
-    "@types/nodemailer": "^6.4.15",
-    "bcrypt": "^5.1.1",
     "mongoose": "^8.4.0",
-    "next": "^14.2.3",
-    "nodemailer": "^6.9.13",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "next": "14.2.3",
+    "next-auth": "^4.24.7",
+    "react": "^18",
+    "react-dom": "^18"
   },
   "devDependencies": {
+    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "autoprefixer": "^10.4.19",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
     "eslint": "^8",
-    "eslint-config-next": "14.2.3",
-    "postcss": "^8.4.38",
-    "tailwindcss": "^3.4.3",
-    "typescript": "^5"
+    "eslint-config-next": "14.2.3"
   }
 }
