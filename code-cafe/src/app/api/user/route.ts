@@ -1,29 +1,70 @@
+// Import necessary modules and functions
 import dbConnect from "@/lib/dbConnect";
-import { NextRequest, NextResponse } from "next/server";
-import User from "@/models/user.model";
-import { getToken } from "next-auth/jwt";
+import UserModel from "@/models/user.model";
+import { Session, getServerSession } from "next-auth";
+import { authOptions } from "../auth/[...nextauth]/options";
+import { NextResponse, NextRequest } from "next/server";
 
-// Define the GET handler for the request
+// Function to handle pagination and fetch users
+async function fetchPaginatedUsers(page: number, limit: number) {
+  const skip = (page - 1) * limit;
+  const users = await UserModel.find().skip(skip).limit(limit);
+  return users;
+}
+
+// Function to handle errors and return appropriate responses
+function handleErrorResponse(errorMessage: string, statusCode: number = 500) {
+  return NextResponse.json({ error: errorMessage }, { status: statusCode });
+}
+
+// Function to check if user is authenticated and authorized
+async function checkAuthAndAuthorization(session: Session | null) {
+  if (!session || !session.user) {
+    return handleErrorResponse("Unauthorized", 401);
+  }
+
+  if (session.user.role !== "admin") {
+    return handleErrorResponse("Access restricted to admin users only", 401);
+  }
+
+  return true;
+}
+
+// Define GET function to handle HTTP GET requests
 export async function GET(req: NextRequest) {
-  // Connect to the database
-  await dbConnect();
   try {
-    const token = await getToken({ req: req });
+    // Extract query parameters from request URL
     const { searchParams } = new URL(req.url);
+    const page = parseInt(searchParams.get("page") || "1", 10); // Default to page 1 if not provided
+    const limit = parseInt(searchParams.get("limit") || "10", 10); // Default to limit 10 if not provided
 
-    if (!token) {
-      return NextResponse.json(
-        { error: "you are unauthorized user" },
-        { status: 401 }
-      );
+    // Connect to database
+    await dbConnect();
+
+    // Get session information
+    const session = await getServerSession(authOptions);
+
+    // Check authentication and authorization
+    const authResult = await checkAuthAndAuthorization(session);
+    if (authResult !== true) {
+      return authResult; // Return error response if not authenticated or authorized
     }
 
-    const page = parseInt(searchParams.get("page") || "1", 10);
-    const limit = parseInt(searchParams.get("limit") || "10", 10);
-    const skip = (page - 1) * limit;
+    // Fetch paginated users
+    const users = await fetchPaginatedUsers(page, limit);
 
-    return NextResponse.json({ token }, { status: 200 });
-  } catch (error: any) {
-    return NextResponse.json({ error: "error geting users" }, { status: 500 });
+    // If no users found, return 404 error
+    if (users.length === 0) {
+      return handleErrorResponse("Users not found", 404);
+    }
+
+    // Return paginated response
+    return NextResponse.json({ users, page, limit });
+  } catch (error) {
+    // Handle any unexpected errors
+    console.error("Error fetching users:", error);
+    return handleErrorResponse("Internal Server Error", 500);
   }
 }
+
+//to create user

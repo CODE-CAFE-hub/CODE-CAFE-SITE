@@ -10,19 +10,13 @@ export const UserSchema = z.object({
   role: z.string(),
   // Add more fields as needed
 });
-export const UsernameValidation = z.object({
-  username: z
-    .string()
-    .min(3, { message: "Username must be at least 3 characters long" }),
-});
+export const UsernameValidation = z.string().min(3).max(50);
 
 // Validation for email
-export const EmailValidation = z.object({
-  email: z.string().email({ message: "Invalid email address" }),
-});
+export const EmailValidation = z
+  .string()
+  .email({ message: "Invalid email address" });
 
 // Role validation
 const roles = ["admin", "user", "guest"] as const; // Define your roles here
-export const RoleValidation = z.object({
-  role: z.enum(roles, { message: "Invalid role" }),
-});
+export const RoleValidation = z.enum(roles, { message: "Invalid role" });
