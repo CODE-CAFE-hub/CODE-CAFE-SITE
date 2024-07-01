@@ -1,65 +1,46 @@
-import express from "express";
-import cookieParser from "cookie-parser";
-import dotenv from "dotenv";
-import helmet from "helmet";
-import rateLimit from "express-rate-limit";
-import cors from "cors";
-import morgan from "morgan";
-import { authRoutes } from "./auth/routes/authRoutes";
-import connectDB from "./config/dbConfig";
+import express from "express"; // Import the express library
+import cors from "cors"; // Import the cors library
+import helmet from "helmet"; // Import helmet for security
+import compression from "compression"; // Import compression for performance
+import { connectDB } from "./Database/connectdb"; // Import the database connection function
+import morgan from "morgan"; // Import morgan for logging
+import dotenv from "dotenv"; // Import dotenv to manage environment variables
+import authRoutes from "./Auth/AuthRoutes/auth.routes"; // Import the auth routes
 
-// Load environment variables
+// Load environment variables from .env file
 dotenv.config();
 
+// Create an instance of the express application
 const app = express();
 
-// Middleware
+// Middleware to parse JSON requests
 app.use(express.json());
-app.use(cookieParser());
-app.use(helmet()); // Security headers
-app.use(morgan("combined")); // Request logging
 
-// Rate limiting
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // limit each IP to 100 requests per windowMs
-  message: "Too many requests from this IP, please try again later.",
-});
-app.use(limiter);
+// Middleware to enable CORS
+app.use(cors());
 
-// CORS
-const corsOptions = {
-  origin: process.env.CORS_ORIGIN || "*", // Adjust as needed
-  methods: "GET,POST,PUT,DELETE",
-  credentials: true,
-};
-app.use(cors(corsOptions));
+// Middleware to enhance security
+app.use(helmet());
 
-// Apply authentication routes
-authRoutes(app);
+// Middleware to compress responses
+app.use(compression());
 
-// Global error handler
-app.use(
-  (
-    err: any,
-    req: express.Request,
-    res: express.Response,
-    next: express.NextFunction
-  ) => {
-    console.error(err.stack);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
-);
+// Middleware to log HTTP requests
+app.use(morgan("combined"));
 
-// Start the server
+//routes
+app.use("/api/auth", authRoutes);
+
+// Environment variable for the port, default to 3000
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}
 
-  Open the browser and navigate to http://localhost:${PORT}
-  `);
-
-  connectDB().catch((err) => console.error("MongoDB connection error:", err));
-
-  // Add additional server initialization code here
+// Start the server and connect to the database
+app.listen(PORT, async () => {
+  // Connect to the database
+  await connectDB();
+  // Log a message indicating that the server is running
+  console.log(`Server is running on port ${PORT}`);
 });
+
+// Export the app for testing or further use
+export default app;
